@@ -22,6 +22,6 @@ namespace PaulShop.API.Models
 
         // Khóa ngoại liên kết tới Category
         public Guid CategoryId { get; set; }
-        public virtual Category Category { get; set; } = null!;
+        public virtual Category? Category { get; set; } = null!;
     }
 }
