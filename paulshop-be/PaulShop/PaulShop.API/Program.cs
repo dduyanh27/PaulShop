@@ -1,6 +1,7 @@
-
+﻿
 using Microsoft.EntityFrameworkCore;
 using PaulShop.API.Models;
+using PaulShop.API.Services;
 
 namespace PaulShop.API
 {
@@ -10,12 +11,19 @@ namespace PaulShop.API
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Services.AddScoped<MinioService>();
+
             // Add services to the container.
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
             builder.Services.AddDbContext<PaulShopContext>(options =>
                 options.UseSqlServer(connectionString));
 
-            builder.Services.AddControllers();
+            builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        // Dòng này giúp bỏ qua vòng lặp vô tận khi xuất JSON
+        options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+    });
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
