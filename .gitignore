@@ -1,0 +1,28 @@
+## [ Danh mục: .NET / Visual Studio ]
+bin/
+obj/
+out/
+.vs/
+.vscode/
+*.user
+*.userosscache
+*.sln.docstates
+# Không commit file cấu hình DB cá nhân
+appsettings.Development.json
+appsettings.Local.json
+
+## [ Danh mục: Node / React Frontend ]
+node_modules/
+dist/
+build/
+.env
+.env.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.eslintcache
+
+## [ Danh mục: Hệ điều hành ]
+.DS_Store
+Thumbs.db
+desktop.ini
